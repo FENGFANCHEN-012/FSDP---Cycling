@@ -18,7 +18,6 @@ async function signup(e) {
 
     if (response.ok) {
       alert('Signup successful! Please log in.');
-      
       window.location.href = '/login.html';
     } else {
       alert(data.message || 'Failed to sign up.');

@@ -1,12 +1,11 @@
 const sql = require('mssql');
-const dbConfig = require('/dbconfig');
+const dbConfig = require('../dbConfig');
 const bcrypt = require('bcryptjs');
 
 module.exports = {
   createUser: async (name, email, password) => {
     const pool = await sql.connect(dbConfig);
     const hashed = await bcrypt.hash(password, 10);
-
     await pool.request()
       .input('name', sql.VarChar(100), name)
       .input('email', sql.VarChar(100), email)
